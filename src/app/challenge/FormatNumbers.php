@@ -1,7 +1,7 @@
 <?php
-namespace app;
+namespace app\challenge;
 
-class NumberLoop
+class FormatNumbers
 {
     const LINIANOS = '00';
     const LINIO = '01';
@@ -20,21 +20,12 @@ class NumberLoop
         );
     }
     
-    public function numberLoop()
-    {
-        $i = 1;
-        while ($i <= 100) {
-            $text = $this->multipleToText($i, 3, 5);
-            echo $text."\n";
-            $i++;
-        }
-    }
     
-    public function multipleToText(int $i, $multiple1, $multiple2)
+    public function multipleToText(int $i, int $multiple1, int $multiple2)
     {
-        $three = $this->multiple->numberEval($i, $multiple1);
-        $five = $this->multiple->numberEval($i, $multiple2);
-        $idx = intval(boolval($three)).intval(boolval($five));
+        $eval1 = $this->multiple->numberEval($i, $multiple1);
+        $eval2 = $this->multiple->numberEval($i, $multiple2);
+        $idx = intval(boolval($eval1)).intval(boolval($eval2));
         
         if (isset($this->text[$idx])) {
             return $this->text[$idx];
